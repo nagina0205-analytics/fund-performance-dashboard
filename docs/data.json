@@ -1,0 +1,436 @@
+{
+  "valuation_date": "2026-09-30",
+  "funds": [
+    {
+      "fund": "Fund I",
+      "paid_in_usd": 180000000.0,
+      "distributed_usd": 433966627.56,
+      "nav_usd": 539207599.12,
+      "dpi": 2.41,
+      "rvpi": 3.0,
+      "tvpi": 5.41,
+      "irr": 0.2522
+    },
+    {
+      "fund": "Fund II",
+      "paid_in_usd": 315000000.0,
+      "distributed_usd": 96273884.04,
+      "nav_usd": 392524984.62,
+      "dpi": 0.31,
+      "rvpi": 1.25,
+      "tvpi": 1.55,
+      "irr": 0.08
+    },
+    {
+      "fund": "Growth Fund I",
+      "paid_in_usd": 450000000.0,
+      "distributed_usd": 13702573.16,
+      "nav_usd": 698883266.86,
+      "dpi": 0.03,
+      "rvpi": 1.55,
+      "tvpi": 1.58,
+      "irr": 0.1241
+    }
+  ],
+  "scenarios": [
+    {
+      "fund": "Fund I",
+      "scenario": "Bear",
+      "projected_tvpi": 4.21,
+      "projected_irr": 0.1919,
+      "liquidity_by_year": {
+        "2029": 152911964.14,
+        "2030": 58214274.47,
+        "2032": 62642150.08,
+        "2034": 49756170.79
+      }
+    },
+    {
+      "fund": "Fund I",
+      "scenario": "Base",
+      "projected_tvpi": 5.41,
+      "projected_irr": 0.2274,
+      "liquidity_by_year": {
+        "2027": 254853273.56,
+        "2028": 97023790.78,
+        "2030": 104403583.47,
+        "2032": 82926951.31
+      }
+    },
+    {
+      "fund": "Fund I",
+      "scenario": "Bull",
+      "projected_tvpi": 7.8,
+      "projected_irr": 0.2685,
+      "liquidity_by_year": {
+        "2027": 633378715.81,
+        "2029": 187926450.25,
+        "2031": 149268512.36
+      }
+    },
+    {
+      "fund": "Fund II",
+      "scenario": "Bear",
+      "projected_tvpi": 1.05,
+      "projected_irr": 0.0056,
+      "liquidity_by_year": {
+        "2029": 0.0,
+        "2030": 69880368.05,
+        "2031": 95761047.74,
+        "2033": 17755922.89,
+        "2034": 52117652.1
+      }
+    },
+    {
+      "fund": "Fund II",
+      "scenario": "Base",
+      "projected_tvpi": 1.55,
+      "projected_irr": 0.0551,
+      "liquidity_by_year": {
+        "2027": 0.0,
+        "2028": 116467280.08,
+        "2029": 159601746.23,
+        "2031": 29593204.81,
+        "2032": 86862753.5
+      }
+    },
+    {
+      "fund": "Fund II",
+      "scenario": "Bull",
+      "projected_tvpi": 2.55,
+      "projected_irr": 0.1305,
+      "liquidity_by_year": {
+        "2027": 209641104.14,
+        "2028": 287283143.21,
+        "2030": 53267768.66,
+        "2031": 156352956.3
+      }
+    },
+    {
+      "fund": "Growth Fund I",
+      "scenario": "Bear",
+      "projected_tvpi": 0.96,
+      "projected_irr": -0.0048,
+      "liquidity_by_year": {
+        "2029": 242973316.88,
+        "2032": 70767904.58,
+        "2033": 61885016.07,
+        "2034": 43703722.58
+      }
+    },
+    {
+      "fund": "Growth Fund I",
+      "scenario": "Base",
+      "projected_tvpi": 1.58,
+      "projected_irr": 0.0786,
+      "liquidity_by_year": {
+        "2027": 404955528.13,
+        "2030": 117946507.64,
+        "2031": 103141693.45,
+        "2032": 72839537.64
+      }
+    },
+    {
+      "fund": "Growth Fund I",
+      "scenario": "Bull",
+      "projected_tvpi": 2.83,
+      "projected_irr": 0.1994,
+      "liquidity_by_year": {
+        "2027": 728919950.63,
+        "2029": 212303713.75,
+        "2030": 185655048.21,
+        "2031": 131111167.75
+      }
+    }
+  ],
+  "companies": [
+    {
+      "fund": "Fund I",
+      "company": "Waypoint",
+      "sector": "Consumer",
+      "stage": "Series B",
+      "invested_usd": 26814252.53,
+      "current_value_usd": 214514020.26,
+      "expected_exit_year": 2027,
+      "reserve_usd": 3685051.71,
+      "moic": 8.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Lumora",
+      "sector": "Crypto",
+      "stage": "Series C",
+      "invested_usd": 53086750.23,
+      "current_value_usd": 362759459.92,
+      "expected_exit_year": 2027,
+      "reserve_usd": 3563216.4,
+      "moic": 6.83,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Ironpeak",
+      "sector": "Healthcare",
+      "stage": "Series B",
+      "invested_usd": 12159508.03,
+      "current_value_usd": 36478524.08,
+      "expected_exit_year": 2030,
+      "reserve_usd": 4637766.06,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Umbrafy",
+      "sector": "AI Infrastructure",
+      "stage": "Series C",
+      "invested_usd": 13446417.77,
+      "current_value_usd": 40339253.3,
+      "expected_exit_year": 2027,
+      "reserve_usd": 4453781.37,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Emberline",
+      "sector": "Bio",
+      "stage": "Series C",
+      "invested_usd": 22641686.46,
+      "current_value_usd": 67925059.39,
+      "expected_exit_year": 2030,
+      "reserve_usd": 3667244.43,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Tesserae",
+      "sector": "AI Infrastructure",
+      "stage": "Growth",
+      "invested_usd": 27642317.1,
+      "current_value_usd": 82926951.31,
+      "expected_exit_year": 2032,
+      "reserve_usd": 2838401.27,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Quarrel",
+      "sector": "Crypto",
+      "stage": "Seed",
+      "invested_usd": 45729909.97,
+      "current_value_usd": 137189729.9,
+      "expected_exit_year": 2029,
+      "reserve_usd": 11929065.46,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Driftwave",
+      "sector": "Crypto",
+      "stage": "Growth",
+      "invested_usd": 29893071.79,
+      "current_value_usd": 89679215.37,
+      "expected_exit_year": 2028,
+      "reserve_usd": 12637089.89,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Brightloom",
+      "sector": "Fintech",
+      "stage": "Seed",
+      "invested_usd": 28954251.17,
+      "current_value_usd": 86862753.5,
+      "expected_exit_year": 2032,
+      "reserve_usd": 15371032.21,
+      "moic": 3.0,
+      "signal": "Prioritize follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Juniper Labs",
+      "sector": "Healthcare",
+      "stage": "Series B",
+      "invested_usd": 46646809.06,
+      "current_value_usd": 69970213.59,
+      "expected_exit_year": 2028,
+      "reserve_usd": 27913239.08,
+      "moic": 1.5,
+      "signal": "Hold reserves"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Orbitra",
+      "sector": "Enterprise SaaS",
+      "stage": "Growth",
+      "invested_usd": 30998044.33,
+      "current_value_usd": 46497066.49,
+      "expected_exit_year": 2028,
+      "reserve_usd": 9442283.43,
+      "moic": 1.5,
+      "signal": "Hold reserves"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Xylo",
+      "sector": "Enterprise SaaS",
+      "stage": "Growth",
+      "invested_usd": 41227440.18,
+      "current_value_usd": 58405540.26,
+      "expected_exit_year": 2031,
+      "reserve_usd": 10466936.47,
+      "moic": 1.42,
+      "signal": "Hold reserves"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Keystride",
+      "sector": "AI Infrastructure",
+      "stage": "Seed",
+      "invested_usd": 47537135.46,
+      "current_value_usd": 67344275.23,
+      "expected_exit_year": 2032,
+      "reserve_usd": 13861556.69,
+      "moic": 1.42,
+      "signal": "Hold reserves"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Fernvale",
+      "sector": "Defense Tech",
+      "stage": "Growth",
+      "invested_usd": 68569772.32,
+      "current_value_usd": 97140510.79,
+      "expected_exit_year": 2030,
+      "reserve_usd": 4978338.1,
+      "moic": 1.42,
+      "signal": "Hold reserves"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Solace AI",
+      "sector": "Consumer",
+      "stage": "Series B",
+      "invested_usd": 31208995.28,
+      "current_value_usd": 20805996.85,
+      "expected_exit_year": 2030,
+      "reserve_usd": 18634566.94,
+      "moic": 0.67,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Rivetta",
+      "sector": "Enterprise SaaS",
+      "stage": "Series A",
+      "invested_usd": 63294102.31,
+      "current_value_usd": 42196068.21,
+      "expected_exit_year": 2027,
+      "reserve_usd": 9147450.73,
+      "moic": 0.67,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Pylonix",
+      "sector": "Crypto",
+      "stage": "Seed",
+      "invested_usd": 67104229.78,
+      "current_value_usd": 44736153.19,
+      "expected_exit_year": 2031,
+      "reserve_usd": 22302286.27,
+      "moic": 0.67,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Halcyra",
+      "sector": "Crypto",
+      "stage": "Series B",
+      "invested_usd": 12240959.01,
+      "current_value_usd": 7344575.41,
+      "expected_exit_year": 2028,
+      "reserve_usd": 4922152.1,
+      "moic": 0.6,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Veridian",
+      "sector": "Bio",
+      "stage": "Series C",
+      "invested_usd": 26337145.82,
+      "current_value_usd": 15802287.49,
+      "expected_exit_year": 2031,
+      "reserve_usd": 1003883.08,
+      "moic": 0.6,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Cobaltix",
+      "sector": "Consumer",
+      "stage": "Growth",
+      "invested_usd": 22984862.2,
+      "current_value_usd": 13790917.32,
+      "expected_exit_year": 2031,
+      "reserve_usd": 3623447.8,
+      "moic": 0.6,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Mosaiq",
+      "sector": "Defense Tech",
+      "stage": "Growth",
+      "invested_usd": 37353360.55,
+      "current_value_usd": 22412016.33,
+      "expected_exit_year": 2029,
+      "reserve_usd": 21763824.46,
+      "moic": 0.6,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Growth Fund I",
+      "company": "Nimbusly",
+      "sector": "Bio",
+      "stage": "Series A",
+      "invested_usd": 32971574.44,
+      "current_value_usd": 5495262.41,
+      "expected_exit_year": 2032,
+      "reserve_usd": 9402484.98,
+      "moic": 0.17,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Fund I",
+      "company": "Arcwell",
+      "sector": "Consumer",
+      "stage": "Series B",
+      "invested_usd": 17161787.3,
+      "current_value_usd": 0.0,
+      "expected_exit_year": 2027,
+      "reserve_usd": 8807268.48,
+      "moic": 0.0,
+      "signal": "Review before follow-on"
+    },
+    {
+      "fund": "Fund II",
+      "company": "Glintra",
+      "sector": "Defense Tech",
+      "stage": "Seed",
+      "invested_usd": 44495616.9,
+      "current_value_usd": 0.0,
+      "expected_exit_year": 2027,
+      "reserve_usd": 22989183.11,
+      "moic": 0.0,
+      "signal": "Review before follow-on"
+    }
+  ]
+}

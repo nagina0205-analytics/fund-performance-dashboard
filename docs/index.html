@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fund Performance Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root { --bg:#f7f7f5; --card:#ffffff; --ink:#1d2433; --muted:#667085; --line:#e4e7ec;
+          --bear:#c2410c; --base:#1d4ed8; --bull:#15803d; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:1080px; margin:0 auto; padding:24px 16px 48px; }
+  h1 { font-size:26px; margin:0 0 4px; }
+  h2 { font-size:18px; margin:0 0 12px; }
+  .sub { color:var(--muted); margin:0 0 24px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px; margin-bottom:18px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:right; padding:8px 6px; border-bottom:1px solid var(--line); }
+  th:first-child, td:first-child { text-align:left; }
+  th { color:var(--muted); font-weight:600; }
+  .tag { padding:2px 8px; border-radius:99px; font-size:12px; white-space:nowrap; }
+  .Prioritize { background:#dcfce7; color:#166534; }
+  .Hold { background:#e0e7ff; color:#3730a3; }
+  .Review { background:#ffedd5; color:#9a3412; }
+  select { font:inherit; padding:4px 8px; margin-left:8px; }
+  .scroll { overflow-x:auto; }
+  .note { color:var(--muted); font-size:13px; margin-top:8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Fund Performance and Exit Scenarios</h1>
+  <p class="sub">Synthetic data for three venture funds. Valuation date <span id="vdate"></span>.</p>
+
+  <section class="card">
+    <h2>Fund performance to date</h2>
+    <div class="scroll"><table id="fundTable"></table></div>
+    <p class="note">DPI is cash returned to LPs. RVPI is value still held. TVPI is the two combined. IRR treats current NAV as a final cash flow on the valuation date.</p>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Projected TVPI by exit scenario</h2>
+      <canvas id="tvpiChart" height="230"></canvas>
+    </section>
+    <section class="card">
+      <h2>Projected liquidity by year
+        <select id="fundPick"></select>
+      </h2>
+      <canvas id="liqChart" height="230"></canvas>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>Follow-on decisions by company</h2>
+    <div class="scroll"><table id="companyTable"></table></div>
+    <p class="note">MOIC is current value over cost. Companies under 0.8x need a review before more capital goes in. Above 1.5x they are first in line for reserves.</p>
+  </section>
+</main>
+
+<script>
+const usdM = v => "$" + (v / 1e6).toFixed(1) + "M";
+const pct = v => v === null ? "n/a" : (v * 100).toFixed(1) + "%";
+const COLORS = { Bear: "#c2410c", Base: "#1d4ed8", Bull: "#15803d" };
+
+fetch("data.json").then(r => r.json()).then(d => {
+  document.getElementById("vdate").textContent = d.valuation_date;
+
+  // Fund table
+  const ft = document.getElementById("fundTable");
+  ft.innerHTML = "<tr><th>Fund</th><th>Paid-in</th><th>Distributed</th><th>NAV</th><th>DPI</th><th>RVPI</th><th>TVPI</th><th>Net IRR</th></tr>" +
+    d.funds.map(f => `<tr><td>${f.fund}</td><td>${usdM(f.paid_in_usd)}</td><td>${usdM(f.distributed_usd)}</td><td>${usdM(f.nav_usd)}</td>
+      <td>${f.dpi.toFixed(2)}x</td><td>${f.rvpi.toFixed(2)}x</td><td>${f.tvpi.toFixed(2)}x</td><td>${pct(f.irr)}</td></tr>`).join("");
+
+  // TVPI by scenario
+  const funds = d.funds.map(f => f.fund);
+  new Chart(document.getElementById("tvpiChart"), {
+    type: "bar",
+    data: {
+      labels: funds,
+      datasets: ["Bear", "Base", "Bull"].map(s => ({
+        label: s, backgroundColor: COLORS[s],
+        data: funds.map(f => d.scenarios.find(x => x.fund === f && x.scenario === s).projected_tvpi)
+      }))
+    },
+    options: { plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(2)}x` } } },
+               scales: { y: { beginAtZero: true, title: { display: true, text: "TVPI (x)" } } } }
+  });
+
+  // Liquidity by year
+  const pick = document.getElementById("fundPick");
+  pick.innerHTML = funds.map(f => `<option>${f}</option>`).join("");
+  let liq;
+  const drawLiq = fund => {
+    const rows = d.scenarios.filter(x => x.fund === fund);
+    const found = rows.flatMap(r => Object.keys(r.liquidity_by_year)).map(Number);
+    const years = [];
+    for (let y = Math.min(...found); y <= Math.max(...found); y++) years.push(String(y));
+    if (liq) liq.destroy();
+    liq = new Chart(document.getElementById("liqChart"), {
+      type: "line",
+      data: { labels: years, datasets: rows.map(r => ({
+        label: r.scenario, borderColor: COLORS[r.scenario], backgroundColor: COLORS[r.scenario], tension: 0.25,
+        data: years.map(y => (r.liquidity_by_year[y] || 0) / 1e6) })) },
+      options: { scales: { y: { beginAtZero: true, title: { display: true, text: "Exit proceeds ($M)" } } } }
+    });
+  };
+  pick.onchange = e => drawLiq(e.target.value);
+  drawLiq(funds[0]);
+
+  // Company table
+  const ct = document.getElementById("companyTable");
+  ct.innerHTML = "<tr><th>Company</th><th>Fund</th><th>Stage</th><th>Invested</th><th>Current value</th><th>MOIC</th><th>Reserves</th><th>Signal</th></tr>" +
+    d.companies.map(c => `<tr><td>${c.company}</td><td>${c.fund}</td><td>${c.stage}</td><td>${usdM(c.invested_usd)}</td>
+      <td>${usdM(c.current_value_usd)}</td><td>${c.moic.toFixed(2)}x</td><td>${usdM(c.reserve_usd)}</td>
+      <td><span class="tag ${c.signal.split(" ")[0]}">${c.signal}</span></td></tr>`).join("");
+});
+</script>
+</body>
+</html>

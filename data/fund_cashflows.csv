@@ -1,0 +1,26 @@
+fund,date,type,amount_usd
+Fund I,2016-03-31,capital_call,-40000000.0
+Fund I,2017-03-31,capital_call,-50000000.0
+Fund I,2018-03-31,capital_call,-40000000.0
+Fund I,2019-03-31,capital_call,-30000000.0
+Fund I,2020-03-31,capital_call,-20000000.0
+Fund I,2021-09-30,distribution,74998878.3
+Fund I,2022-09-30,distribution,87328105.57
+Fund I,2023-09-30,distribution,42363930.54
+Fund I,2024-09-30,distribution,87125878.1
+Fund I,2025-09-30,distribution,81095806.12
+Fund I,2026-09-30,distribution,61054028.93
+Fund II,2019-03-31,capital_call,-70000000.0
+Fund II,2020-03-31,capital_call,-87500000.0
+Fund II,2021-03-31,capital_call,-70000000.0
+Fund II,2022-03-31,capital_call,-52500000.0
+Fund II,2023-03-31,capital_call,-35000000.0
+Fund II,2024-09-30,distribution,26278568.2
+Fund II,2025-09-30,distribution,35799222.41
+Fund II,2026-09-30,distribution,34196093.43
+Growth Fund I,2021-03-31,capital_call,-100000000.0
+Growth Fund I,2022-03-31,capital_call,-125000000.0
+Growth Fund I,2023-03-31,capital_call,-100000000.0
+Growth Fund I,2024-03-31,capital_call,-75000000.0
+Growth Fund I,2025-03-31,capital_call,-50000000.0
+Growth Fund I,2026-09-30,distribution,13702573.16
