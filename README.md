@@ -2,7 +2,7 @@
 
 LPs ask the same questions every quarter. How is the fund doing? When will we get cash back? What happens if exits slip? This project answers those three questions for three synthetic venture funds, and puts the answers on one web page a non-technical reader can use.
 
-**Live dashboard:** https://nagina-arsalan.github.io/fund-performance-dashboard/
+**Live dashboard:** https://nagina0205-analytics.github.io/fund-performance-dashboard/
 
 All funds, companies and numbers are made up. `src/generate_cashflows.py` creates them.
 
